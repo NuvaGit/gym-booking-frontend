@@ -5,21 +5,14 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/gym-booking-frontend">  {/* Fix for GitHub Pages */}
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<h1>Welcome to UCD Gym Booking</h1>} />
         <Route path="/book-gym" element={<BookGym />} />
       </Routes>
     </Router>
   );
 }
-
-const Home = () => (
-  <div className="container">
-    <h1>Welcome to My Portfolio</h1>
-    <p>This is a React + Vite project with Gym Booking functionality.</p>
-  </div>
-);
 
 export default App;
