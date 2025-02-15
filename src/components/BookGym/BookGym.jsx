@@ -23,7 +23,8 @@ export const BookGym = () => {
 
       const data = await response.json();
       setMessage(data.message);
-      setLogs(data.logs || []); // ✅ Display logs from backend
+      setLogs(data.logs || []); 
+    // eslint-disable-next-line no-unused-vars
     } catch (_error) {
       setMessage("❌ Error connecting to the server.");
     }
@@ -41,7 +42,6 @@ export const BookGym = () => {
       <button onClick={handleBooking}>Book Gym</button>
       {message && <p>{message}</p>}
       
-      {/* ✅ Show real-time logs from backend */}
       <div className="logs">
         {logs.length > 0 && <h3>📜 Booking Logs:</h3>}
         {logs.map((log, index) => (
