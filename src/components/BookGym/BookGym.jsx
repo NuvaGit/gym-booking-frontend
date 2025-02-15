@@ -1,10 +1,10 @@
-import { useState } from "react"; // ✅ Removed unused 'React' import
+import { useState } from "react";
 import "./BookGym.css";
 
 export const BookGym = () => {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
-  const [logs, setLogs] = useState([]); // ✅ Store logs from backend
+  const [logs, setLogs] = useState([]); // Store logs from backend
 
   const handleBooking = async () => {
     if (!username) {
@@ -21,11 +21,16 @@ export const BookGym = () => {
         body: JSON.stringify({ username }),
       });
 
+      // Check if the response status is OK
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
       const data = await response.json();
       setMessage(data.message);
-      setLogs(data.logs || []); 
-    // eslint-disable-next-line no-unused-vars
-    } catch (_error) {
+      setLogs(data.logs || []);
+    } catch (error) {
+      console.error("Booking error:", error);
       setMessage("❌ Error connecting to the server.");
     }
   };
@@ -42,12 +47,14 @@ export const BookGym = () => {
       <button onClick={handleBooking}>Book Gym</button>
       {message && <p>{message}</p>}
       
-      <div className="logs">
-        {logs.length > 0 && <h3>📜 Booking Logs:</h3>}
-        {logs.map((log, index) => (
-          <p key={index}>{log}</p>
-        ))}
-      </div>
+      {logs.length > 0 && (
+        <div className="logs">
+          <h3>📜 Booking Logs:</h3>
+          {logs.map((log, index) => (
+            <p key={index}>{log}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
