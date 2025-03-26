@@ -1,51 +1,202 @@
-/* Navbar Styling */
 .navbar {
-    display: flex;
-    align-items: center;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  color: white;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  padding: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(90deg, #ffffff, #4cc9f0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-toggle {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-left: auto;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 0.5rem;
+  position: relative;
+}
+
+.nav-link {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.8rem 1rem;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 5px;
+  left: 50%;
+  background-color: #4cc9f0;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 50%;
+  left: 25%;
+}
+
+.book-gym-btn {
+  background: linear-gradient(to right, #4CAF50, #45a049);
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.book-gym-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(to right, #45a049, #4CAF50);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-gym-btn svg,
+.book-gym-btn i {
+  font-size: 1.2rem;
+}
+
+/* Mobile menu styling */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 0 0 12px 12px;
+}
+
+.nav-menu.open {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Desktop menu styling */
+@media (min-width: 768px) {
+  .navbar-container {
     justify-content: space-between;
-    padding: 15px 30px;
-    background-color: #1e1e2e;
-    color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Logo */
-  .logo img {
-    height: 40px;
+  .mobile-toggle {
+    display: none;
+  }
+  
+  .nav-menu {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    transform: none;
+    opacity: 1;
+    padding: 0;
+    box-shadow: none;
     width: auto;
   }
   
-  /* Navbar Title */
-  .navbar .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
+  .book-gym-btn {
+    margin-top: 0;
+    margin-left: 1rem;
   }
   
-  /* Book Gym Button */
-  .menu .bookGym {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+  .nav-link::after {
+    bottom: 10px;
   }
-  
-  .menu .bookGym:hover {
-    background-color: #45a049;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      text-align: center;
-    }
-    .menu {
-      margin-top: 10px;
-    }
-  }
-  
+}
