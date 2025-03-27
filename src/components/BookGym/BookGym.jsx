@@ -22,7 +22,7 @@ export const BookGym = () => {
     setLogs([]);
 
     try {
-      const response = await fetch("https://89zz6d6gla.execute-api.eu-north-1.amazonaws.com/default/book", {
+      const response = await fetch("https://riymhrkwkcadkcg4ksu7subw7q0ecefo.lambda-url.eu-north-1.on.aws/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, browserType }),
