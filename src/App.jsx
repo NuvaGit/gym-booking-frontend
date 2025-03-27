@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router basename="/gym-booking-frontend">
+    <Router basename="/">
       <div className="app-container">
         <Navbar />
         
